@@ -23,6 +23,13 @@ int main() {
     const int NUM_SIMS = 15;
     const int NUM_SLICES = 2;
 
+    string raceNames[NUM_RACES] = {
+            "Read",
+            "Sort",
+            "Insert",
+            "Delete"
+    };
+
     // times[0] = current simulation
     // times[1] = running totals
     long long times[NUM_SLICES][NUM_RACES][NUM_CONTAINERS] = {};
@@ -209,8 +216,24 @@ int main() {
                 times[1][i][j] += times[0][i][j];
             }
         }
+    }
 
-        cout << "Simulation " << sim + 1 << " complete." << endl;
+    cout << "Number of simulations: " << NUM_SIMS << endl;
+
+    cout << setw(10) << "Operation"
+        << setw(10) << "Vector"
+        << setw(10) << "List"
+        << setw(10) << "Set" << endl;
+
+
+    for (int i = 0; i < NUM_RACES; i++) {
+        cout << setw(10) << raceNames[i];
+
+        for (int j = 0; j < NUM_CONTAINERS; j++) {
+            cout << setw(10) << times[1][i][j] / NUM_SIMS;
+        }
+
+        cout << endl;
     }
 
     return 0;
