@@ -24,16 +24,17 @@ int main() {
     const int NUM_SLICES = 2;
 
     string raceNames[NUM_RACES] = {
-            "Read",
-            "Sort",
-            "Insert",
-            "Delete"
+        "Read",
+        "Sort",
+        "Insert",
+        "Delete"
     };
 
     // times[0] = current simulation
     // times[1] = running totals
     long long times[NUM_SLICES][NUM_RACES][NUM_CONTAINERS] = {};
 
+    // Run all four races 15 times
     for (int sim = 0; sim < NUM_SIMS; sim++) {
 
         vector<string> vectorCodes;
@@ -238,10 +239,3 @@ int main() {
 
     return 0;
 }
-
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
