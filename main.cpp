@@ -20,6 +20,7 @@ int main() {
 
     const int NUM_RACES = 4;
     const int NUM_CONTAINERS = 3;
+    const int NUM_SIMS = 15;
 
     string raceNames[NUM_RACES] = {
         "Read",
@@ -34,15 +35,17 @@ int main() {
         "Set"
     };
 
-    vector<string> vectorCodes;
-    list<string> listCodes;
-    set<string> setCodes;
+    for (int sim = 0; sim < NUM_SIMS; sim++) {
 
-    string code;
+        vector<string> vectorCodes;
+        list<string> listCodes;
+        set<string> setCodes;
 
-    long long vectorTimes[NUM_RACES] = {};
-    long long listTimes[NUM_RACES] = {};
-    long long setTimes[NUM_RACES] = {};
+        string code;
+
+        long long vectorTimes[NUM_RACES] = {};
+        long long listTimes[NUM_RACES] = {};
+        long long setTimes[NUM_RACES] = {};
 
     // Race 1: READING
     // File is opened before timing so only the reading is timed.
@@ -168,27 +171,8 @@ int main() {
 
     setTimes[3] = duration_cast<nanoseconds>(end - start).count();
     
-    cout << endl;
+    cout << "Simulation " << sim + 1 << " complete." << endl;
 
-    cout << "Times in nanoseconds" << endl;
-    cout << endl;
-
-    cout << left << setw(15) << "Operation";
-
-    for (int j = 0; j < NUM_CONTAINERS; j++) {
-        cout << right << setw(15) << containerNames[j];
-    }
-
-    cout << endl;
-
-    for (int i = 0; i < NUM_RACES; i++) {
-        cout << left << setw(15) << raceNames[i];
-
-        cout << right << setw(15) << vectorTimes[i];
-        cout << right << setw(15) << listTimes[i];
-        cout << right << setw(15) << setTimes[i];
-
-        cout << endl;
     }
     return 0;
 }
